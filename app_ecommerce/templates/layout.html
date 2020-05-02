@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css')}}">
     {% if title %}
-        <title>eCommerce - {{title}}</title>
+        <title>ImportsManila - {{title}}</title>
     {% else %}
-        <title>eCommerce</title>
+        <title>ImportsManila</title>
     {% endif %}
 </head>
 <body>
@@ -18,7 +18,7 @@
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
             <a class="navbar-brand mr-4" href="/">
-            eCommerce
+            Imports Manila
             </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -44,12 +44,16 @@
     </header>
     <main role="main" class="container">
         <div class="row">
-            <div class="col-md-2">
-                <img class="mr-3" src="{{url_for('static',filename='page_picts/logo.png')}}"
-                    alt="Generic placeholder image" height="130" width="130">
+            <div class="col-md-4">
+                <center>
+                    <img class="mr-3" src="{{url_for('static',filename='page_picts/logo.png')}}"
+                        alt="Generic placeholder image" height="130" width="130">
+                </center>
             </div>
-            <div class="col-md-10">
-                <h1 class="display-1 center">IMPORTS MANILA</h1>
+            <div class="col-md-8">
+                <center>
+                    <h1 class="display-4">IMPORTS MANILA</h1>
+                </center>
             </div>
         </div>
         <div class="row">

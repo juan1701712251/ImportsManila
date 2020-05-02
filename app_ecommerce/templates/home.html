@@ -4,9 +4,9 @@
     <!-- Categories here -->
     <div class="col-md-4">
       <div class="content-section">
-        <h3 class="text-center">Categories</h3>
+        <h3 class="text-center">Categorías</h3>
         <div class="list-group">
-            <a class="list-group-item list-group-item-action list-group-item-link" href="javascript:history.back()"> Back</a>
+            <a class="list-group-item list-group-item-action list-group-item-link" href="javascript:history.back()"> Volver</a>
             {% for cat in categories %}
                 {% if cat.subCategories|length > 0 %}
                     <a href="{{url_for('categories.subcategories_for_category',category_id=cat.id)}}" class="list-group-item list-group-item-action list-group-item-light">{{cat.name}}</a>
@@ -22,7 +22,7 @@
     {% if products %}
         <div class="col-md-8">
           <div class="content-section">
-            <h3 class="text-center">Products</h3>
+            <h3 class="text-center">Productos</h3>
               <div class="col-lg-12">
                     <div class="row">
                       {% for p in products %}
@@ -34,8 +34,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                 <a href="{{url_for('products.view_product',product_id=p.id)}}" class="text-Capitalize">{{p.name}}</a>
-                                </h4>$USD {{p.price|round(2)}}</h4>
-                                <p class="card-text font-weight-light">$MXN {{(p.price*quote)|round(2)}}</p>
+                                </h4>$COP {{p.price|round}}</h4>
                             </div>
                             </div>
                         </div>

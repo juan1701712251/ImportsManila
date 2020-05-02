@@ -1,6 +1,7 @@
 import os
 import json
 
+#Open file with the config
 with open('/etc/config.json') as cf:
 	config = json.load(cf) 
 

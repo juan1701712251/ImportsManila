@@ -17,7 +17,9 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">eCommerce</a>
+            <a class="navbar-brand mr-4" href="/">
+            eCommerce
+            </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -41,6 +43,15 @@
       </nav>
     </header>
     <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <img class="mr-3" src="{{url_for('static',filename='page_picts/logo.png')}}"
+                    alt="Generic placeholder image" height="130" width="130">
+            </div>
+            <div class="col-md-10">
+                <h1 class="display-1 center">IMPORTS MANILA</h1>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 {% with messages = get_flashed_messages(with_categories=true) %}

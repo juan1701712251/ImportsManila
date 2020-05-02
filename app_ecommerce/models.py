@@ -45,7 +45,7 @@ class Category(db.Model):
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20),unique=True, nullable=False)
-    description = db.Column(db.String(120),nullable=False)
+    description = db.Column(db.String(2500),nullable=False)
     weight = db.Column(db.String(10), nullable=False,default='1Kg')
     price = db.Column(db.Float(10), nullable=False,default=3.1)
     image_file1 = db.Column(db.String(20),nullable=False,default='defaultProduct.jpg')

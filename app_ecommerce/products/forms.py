@@ -10,7 +10,7 @@ class NonValidatingSelectField(SelectField):
 
 class ProductsForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired(),Length(min=2,max=20)])
-    description = TextAreaField('Description', validators=[DataRequired(),Length(min=2,max=120)])
+    description = TextAreaField('Description', validators=[DataRequired(),Length(min=2,max=2500 )])
     weight = StringField('Weight',validators=[DataRequired()])
     price = FloatField('Price(USD)', validators=[DataRequired()])
     image1 = FileField('Insert Image 1',validators=[FileAllowed(['jpg','png'])])

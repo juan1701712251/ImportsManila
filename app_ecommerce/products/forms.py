@@ -12,7 +12,7 @@ class ProductsForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired(),Length(min=2,max=20)])
     description = TextAreaField('Description', validators=[DataRequired(),Length(min=2,max=2500 )])
     weight = StringField('Weight',validators=[DataRequired()])
-    price = FloatField('Price(USD)', validators=[DataRequired()])
+    price = FloatField('Price(COP)', validators=[DataRequired()])
     image1 = FileField('Insert Image 1',validators=[FileAllowed(['jpg','png'])])
     image2 = FileField('Insert Image 2',validators=[FileAllowed(['jpg', 'png'])])
     image3 = FileField('Insert Image 3',validators=[FileAllowed(['jpg', 'png'])])

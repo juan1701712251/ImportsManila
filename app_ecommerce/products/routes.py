@@ -1,4 +1,4 @@
-from flask import (render_template, url_for, flash,
+from flask import (render_template, url_for, flash, request,
                    redirect, Blueprint)
 from flask_login import login_required
 from app_ecommerce.categories.utils import get_categories_allowed
@@ -42,6 +42,47 @@ def new_product():
         return redirect(url_for('main.home'))
 
     return render_template('create_product.html', title='New Product', form=form, legend='New Product')
+
+@products.route('/product/<int:product_id>/update',methods=['GET','POST'])
+@login_required
+def update_product(product_id):
+    p = Product.query.get_or_404(product_id)
+    form = ProductsForm()
+    form.category.choices = get_categories_allowed()
+    if form.validate_on_submit():
+        img1 = None
+        img2 = None
+        img3 = None
+        if form.image1.data:
+            img1 = save_picture(form.image1.data,'product_pics')
+        if form.image2.data:
+            img2 = save_picture(form.image2.data,'product_pics')
+        if form.image3.data:
+            img3 = save_picture(form.image3.data,'product_pics')
+        cate = Category.query.get(form.category.data)
+
+        #Actualizamos los datos
+        p.name=form.name.data
+        p.description=form.description.data
+        p.weight=form.weight.data
+        p.price=form.price.data
+        p.cate=cate
+        p.image_file1=img1
+        p.image_file2=img2
+        p.image_file3=img3
+
+        db.session.commit()
+        flash(f'Your product has been updated','success')
+        return redirect(url_for('main.home'))
+
+    elif request.method == 'GET':
+        form.name.data = p.name
+        form.description.data = p.description
+        form.weight.data = p.weight
+        form.price.data = p.price
+
+
+    return render_template('create_product.html', title='Update Product', form=form, legend='Update Product')
 
 @products.route('/product/<int:product_id>')
 def view_product(product_id):

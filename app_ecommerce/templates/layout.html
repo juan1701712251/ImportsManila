@@ -34,9 +34,9 @@
                     <a class="nav-item nav-link" href="{{url_for('products.new_product')}}">Create a Product</a>
                     <a class="nav-item nav-link" href="{{url_for('categories.new_category')}}">Create a Category</a>
                 {% else %}
-                    <!--
+                    <!-- Recordar cambiar login por register cuando se requiera volver a registrarse desde boton
                     <a class="nav-item nav-link" href="{{url_for('users.login')}}">Login</a>
-                    <a class="nav-item nav-link" href="{{url_for('users.register')}}">Register as admin</a>
+                    <a class="nav-item nav-link" href="{{url_for('users.login')}}">Register as admin</a>
                     -->
                 {% endif %}
             </div>

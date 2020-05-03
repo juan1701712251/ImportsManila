@@ -7,6 +7,7 @@ from app_ecommerce.users.utils import save_picture, send_reset_email
 
 users = Blueprint('users',__name__)
 
+'''
 @users.route('/register',methods=['GET','POST'])
 def register():
     if current_user.is_authenticated:
@@ -21,7 +22,7 @@ def register():
         return redirect(url_for('users.login'))
 
     return render_template('register.html',title='Register',form=form)
-
+'''
 @users.route('/login',methods=['GET','POST'])
 def login():
     if current_user.is_authenticated:

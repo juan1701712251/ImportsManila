@@ -50,9 +50,9 @@ def update_product(product_id):
     form = ProductsForm()
     form.category.choices = get_categories_allowed()
     if form.validate_on_submit():
-        img1 = None
-        img2 = None
-        img3 = None
+        img1 = 'defaultProduct.jpg'
+        img2 = 'defaultProduct.jpg'
+        img3 = 'defaultProduct.jpg'
         if form.image1.data:
             img1 = save_picture(form.image1.data,'product_pics')
         if form.image2.data:
@@ -88,3 +88,12 @@ def update_product(product_id):
 def view_product(product_id):
     product = Product.query.get(product_id)
     return render_template('product.html', title='Product',quote=quote,product=product)
+
+@products.route('/product/<int:product_id>/delete_product',methods=['POST'])
+@login_required
+def delete_product(product_id):
+    p = Product.query.get_or_404(product_id)
+    db.session.delete(p)
+    db.session.commit()
+    flash(f'Your product has been deleted','info')
+    return redirect(url_for('main.home'))

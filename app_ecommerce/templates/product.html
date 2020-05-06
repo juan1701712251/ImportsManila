@@ -45,7 +45,7 @@
               <div class="media-body">
                   <h2 class="mr-2 text-primary" >{{ product.name }}</h2>
                   <h4 class="text-muted">Precio</h4>
-                  <p class="article-title">$COP {{ product.price|round|int }}</p>
+                  <p class="article-title">$COP {{ product.price|int }}</p>
                   <p class="text-muted">Peso: {{ product.weight }}</p>
                   <p class="article-content">Descripción: {{ product.description }}</p>   
                 </div>

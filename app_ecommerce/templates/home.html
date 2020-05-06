@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                 <a href="{{url_for('products.view_product',product_id=p.id)}}" class="text-Capitalize">{{p.name}}</a>
-                                </h4>$COP {{p.price|round}}</h4>
+                                </h4>$ {{p.price|round|int}}</h4>
                             </div>
                             </div>
                         </div>

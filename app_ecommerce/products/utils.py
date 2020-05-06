@@ -14,7 +14,7 @@ def save_picture(form_picture,folder):
     #Creamos el path donde vamos a guardar
     picture_path = os.path.join(app.root_path,'static/'+folder,picture_fname)
     #Redimensionar la imagen
-    output_size = (125,125)
+    output_size = (300,300)
     i = Image.open(form_picture)
     i.thumbnail(output_size)
     #Guardamos la imagen

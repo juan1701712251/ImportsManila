@@ -9,7 +9,7 @@ class NonValidatingSelectField(SelectField):
         pass
 
 class CategoryForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired(), Length(min=2, max=20)])
+    name = StringField('Name', validators=[DataRequired(), Length(min=2, max=80)])
     image = FileField('Insert Image', validators=[FileAllowed(['jpg', 'png'])])
     parent_category = NonValidatingSelectField('Parent Category', choices=get_categories())
 

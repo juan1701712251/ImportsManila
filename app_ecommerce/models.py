@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20),unique=True,nullable=False)
+    name = db.Column(db.String(80),unique=True,nullable=False)
     image_file = db.Column(db.String(20),nullable=False,default='defaultCategory.jpg')
     parent_category = db.Column(db.Integer, db.ForeignKey('category.id'),nullable=False,default='root')
 
@@ -44,7 +44,7 @@ class Category(db.Model):
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20),unique=True, nullable=False)
+    name = db.Column(db.String(80),unique=True, nullable=False)
     description = db.Column(db.String(2500),nullable=False)
     weight = db.Column(db.String(10), nullable=False,default='1Kg')
     price = db.Column(db.Float(10), nullable=False,default=3.1)

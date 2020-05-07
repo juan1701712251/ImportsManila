@@ -9,7 +9,7 @@ class NonValidatingSelectField(SelectField):
         pass
 
 class ProductsForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired(),Length(min=2,max=20)])
+    name = StringField('Name', validators=[DataRequired(),Length(min=2,max=80)])
     description = TextAreaField('Description', validators=[DataRequired(),Length(min=2,max=2500 )])
     weight = StringField('Weight',validators=[DataRequired()])
     price = FloatField('Price(COP)', validators=[DataRequired()])

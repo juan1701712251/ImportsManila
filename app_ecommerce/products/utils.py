@@ -23,6 +23,9 @@ def save_picture(form_picture,folder):
     return picture_fname
 
 def delete_image_file(filename):
+    if filename == "defaultProduct.jpg":
+        return
+
     try:
         picture_path = os.path.join(app.root_path,'static/product_pics',filename)
         print("Borrando.."+picture_path)

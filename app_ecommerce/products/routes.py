@@ -89,7 +89,7 @@ def update_product(product_id):
 
 @products.route('/product/<int:product_id>')
 def view_product(product_id):
-    product = Product.query.get(product_id)
+    product = Product.query.get_or_404(product_id)
     return render_template('product.html', title='Product',quote=quote,product=product)
 
 @products.route('/product/<int:product_id>/delete_product',methods=['POST'])

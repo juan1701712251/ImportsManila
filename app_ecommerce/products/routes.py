@@ -2,7 +2,7 @@ from flask import (render_template, url_for, flash, request,
                    redirect, Blueprint)
 from flask_login import login_required
 from app_ecommerce.categories.utils import get_categories_allowed
-from app_ecommerce.products.utils import save_picture
+from app_ecommerce.products.utils import save_picture, delete_image_file
 from app_ecommerce.products.forms import ProductsForm
 from app_ecommerce.models import Product, Category
 from app_ecommerce import db,quote
@@ -50,14 +50,17 @@ def update_product(product_id):
     form = ProductsForm()
     form.category.choices = get_categories_allowed()
     if form.validate_on_submit():
-        img1 = 'defaultProduct.jpg'
-        img2 = 'defaultProduct.jpg'
-        img3 = 'defaultProduct.jpg'
+        img1 = p.image_file1
+        img2 = p.image_file2
+        img3 = p.image_file3
         if form.image1.data:
+            delete_image_file(img1)
             img1 = save_picture(form.image1.data,'product_pics')
         if form.image2.data:
+            delete_image_file(img2)
             img2 = save_picture(form.image2.data,'product_pics')
         if form.image3.data:
+            delete_image_file(img3)
             img3 = save_picture(form.image3.data,'product_pics')
         cate = Category.query.get(form.category.data)
 

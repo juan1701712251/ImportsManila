@@ -22,6 +22,15 @@ def save_picture(form_picture,folder):
     #Devolvemos el nuevo path
     return picture_fname
 
+def delete_image_file(filename):
+    try:
+        picture_path = os.path.join(app.root_path,'static/product_pics',filename)
+        print("Borrando.."+picture_path)
+        os.remove(picture_path)
+    except:
+        return
+        
+
 def get_quote_USD_to(change):
     url = 'http://api.currencylayer.com/live?access_key=405e0a2e943e4174df8bb5881800e101&currencies=USD,AUD,CAD,PLN,MXN&format=1'
     response = requests.get(url)

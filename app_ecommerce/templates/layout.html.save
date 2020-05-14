@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css')}}">
+    <link rel="icon" type="image/png" href="{{ url_for('static',filename='page_picts/logo.png')}}" />
+    {% if title %}
+        <title>ImportsManila - {{title}}</title>
+    {% else %}
+        <title>ImportsManila</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+            <a class="navbar-brand mr-4" href="/">
+            Imports Manila
+            </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{url_for('main.home')}}">Inicio</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                {% if current_user.is_authenticated %}
+                    <a class="nav-item nav-link" href="{{url_for('users.logout')}}">Logout</a>
+                    <a class="nav-item nav-link" href="{{url_for('products.new_product')}}">Create a Product</a>
+                    <a class="nav-item nav-link" href="{{url_for('categories.new_category')}}">Create a Category</a>
+                {% else %}
+                    <!-- Recordar cambiar login por register cuando se requiera volver a registrarse desde boton
+                    <a class="nav-item nav-link" href="{{url_for('users.login')}}">Login</a>
+                    <a class="nav-item nav-link" href="{{url_for('users.login')}}">Register as admin</a>
+                    -->
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <center>
+                    <img class="mr-3" src="{{url_for('static',filename='page_picts/logo.png')}}"
+                        alt="Generic placeholder image" height="130" width="130">
+                </center>
+            </div>
+            <div class="col-md-8">
+                <center>
+                    <h1 class="display-4">IMPORTS MANILA</h1>
+                    <div class="row">
+                        <h5 class="col-md-6 h5304-387-9698
+                        <a href="https://www.facebook.com/ImportsManila" class="col-md-6 h5"><img src="{{ url_for('static' ,filename='page_picts/facebook.png')}}" width="30" height="30">@ImportsManila</a>
+                        <h5 class="col md-1 h6 subtitle">Domicilio gratis en Manizales - Pago contra entrega</h5>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{category}}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+            {% block content %}{% endblock %}
+      </div>
+
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

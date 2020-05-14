@@ -17,6 +17,7 @@ class ProductsForm(FlaskForm):
     image2 = FileField('Insert Image 2',validators=[FileAllowed(['jpg', 'png'])])
     image3 = FileField('Insert Image 3',validators=[FileAllowed(['jpg', 'png'])])
     category = NonValidatingSelectField('Category',choices=get_categories_allowed())
+    spent = NonValidatingSelectField('Spent?',choices=[ (False, 'False'),(True, 'True') ])
 
     submit = SubmitField('Create Product')
 

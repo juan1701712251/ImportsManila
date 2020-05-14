@@ -35,7 +35,8 @@ def new_product():
                           cate=cate,
                           image_file1=img1,
                           image_file2=img2,
-                          image_file3=img3)
+                          image_file3=img3,
+                          spent= 1 if form.spent.data == True or form.spent.data == "True" else 0)
         db.session.add(product)
         db.session.commit()
         flash(f'Your product has been created','success')
@@ -73,6 +74,7 @@ def update_product(product_id):
         p.image_file1=img1
         p.image_file2=img2
         p.image_file3=img3
+        p.spent = 1 if form.spent.data == True or form.spent.data == "True" else 0
 
         db.session.commit()
         flash(f'Your product has been updated','success')
@@ -83,6 +85,7 @@ def update_product(product_id):
         form.description.data = p.description
         form.weight.data = p.weight
         form.price.data = p.price
+        form.spent.data = "True" if p.spent else "False"
 
 
     return render_template('create_product.html', title='Update Product', form=form, legend='Update Product')

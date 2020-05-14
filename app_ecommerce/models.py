@@ -52,6 +52,7 @@ class Product(db.Model):
     image_file2 = db.Column(db.String(20), nullable=False, default='defaultProduct.jpg')
     image_file3 = db.Column(db.String(20), nullable=False, default='defaultProduct.jpg')
     category = db.Column(db.Integer, db.ForeignKey('category.id'),nullable=False)
+    spent = db.Column(db.Boolean, default=False, nullable=False)
 
     def __repr__(self):
         return f"Product('{self.name}','{self.category}','{self.price}')"
